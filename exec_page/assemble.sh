@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-nasm -f elf64 main.asm 
+rm main.o
+rm a.out
+
+nasm -g -f elf64 main.asm 
+ld main.o

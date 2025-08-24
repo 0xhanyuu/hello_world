@@ -1,28 +1,15 @@
-     1 00000000 4883EC10                        sub     rsp, 16
-     2                                  
-     3 00000004 48B86F726C64210A00-             mov     rax, 0x00000A21646C726F
-     3 0000000D 00                 
-     4 0000000E 50                              push    rax
-     5                                  
-     6 0000000F 48B848656C6C6F2C20-             mov     rax, 0x57202C6F6C6C6548
-     6 00000018 57                 
-     7 00000019 50                              push    rax
-     8                                  
-     9 0000001A B801000000                      mov     rax, 0x01
-    10 0000001F BF01000000                      mov     rdi, 0x01
-    11 00000024 4889E6                          mov     rsi, rsp
-    12 00000027 BA07000000                      mov     rdx, 0x07
-    13 0000002C 0F05                            syscall
-    14 0000002E 4883C407                        add     rsp, 7
-    15 00000032 B801000000                      mov     rax, 0x01
-    16 00000037 BF01000000                      mov     rdi, 0x01
-    17 0000003C 4889E6                          mov     rsi, rsp
-    18 0000003F BA07000000                      mov     rdx, 0x07
-    19 00000044 0F05                            syscall
-    20                                  
-    21 00000046 4883C409                        add     rsp, 9
-    22 0000004A B800000000                      mov     rax, 0x00
-    23                                  
-    24 0000004F B83C000000                      mov     rax, 0x3c
-    25 00000054 4831FF                          xor     rdi, rdi
-    26 00000057 0F05                            syscall
+     1                                          bits 64
+     2                                                                  ;args: 128 bit integer [rdi - rsi] 
+     3 00000000 4989F2                          mov     r10, rsi        ;rsi -> r10 (temporary store) [x]
+     4                                  
+     5 00000003 B801000000                      mov     rax, 0x01
+     6 00000008 4889FE                          mov     rsi, rdi        ;rdi -> rsi (for first write call) [x]
+     7 0000000B BF01000000                      mov     rdi, 0x01
+     8 00000010 BA0E000000                      mov     rdx, 0x0e
+     9 00000015 0F05                            syscall
+    10                                  
+    11 00000017 B800000000                      mov     rax, 0x00
+    12                                  
+    13 0000001C B83C000000                      mov     rax, 0x3c
+    14 00000021 4831FF                          xor     rdi, rdi
+    15 00000024 0F05                            syscall
