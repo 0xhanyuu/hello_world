@@ -7,8 +7,6 @@ A list of "Hello, World!" projects written in different languages that I have ma
 
 ### exec_page
 
-A program that aims to take a 128 bit integer, of which is a type-punned "`Hello, World!\n`" string literal, and pass as an argument into machine code stored in an `unsigned char` array to be copied to an executable page, called by a function pointer.
-
-In the current state of the program, it achieves this, albeit without using the 128 bit integer as an argument -- it is hardcoded / stored internally.
+A program that takes a `__uint128_t` value, of which is a type-punned "`Hello, World!\n`" string literal, and passes this value as an argument of type `__uint128_t *` into machine code, of which is stored in bytes in an `unsigned char[]`, copied to an executable page, instantiated into, and called by a function pointer.
 
 Previous iterations of the program have been kept in the directory.
